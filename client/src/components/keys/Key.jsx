@@ -2,38 +2,37 @@ import { useEffect, useState } from 'react'
 import './Key.css'
 
 export const Key = (props) => {
-    const {letter, text} = props
+    const {letter, display} = props
     let [keyPressed, setKeyPressed] = useState(false)
 
-    useEffect(() => {  
-        document.addEventListener('keydown', detectKeyDown, true);  
-      
-        return () => {
-          // Cleanup: Remove the event listener when the component unmounts
-          document.removeEventListener('keydown', detectKeyDown, true);
-        };
-      }, []);
+      useEffect(() => {
+        // Add event listeners for keydown and keyup
+        document.addEventListener('keydown', handleKeyDown, true);
+        document.addEventListener('keyup', handleKeyUp, true);
 
-    //   const handleChange = (e) => {
-    //     console.log(e);
-        
-    //   };
-    
-      const detectKeyDown = (e) => {
-        if (e.key.toUpperCase() === letter) {
-            setKeyPressed(true)
-            // handleChange(e.key)
-        } else if (e.key === letter) {    
-            setKeyPressed(true)
-            // handleChange(e.key)
-        } else {
-            setKeyPressed(false)
+        return () => {
+            // Cleanup event listeners on component unmount
+            document.removeEventListener('keydown', handleKeyDown, true);
+            document.removeEventListener('keyup', handleKeyUp, true);
+        };
+    }, []);
+
+    const handleKeyDown = (e) => {
+        if (e.key.toUpperCase() === letter || e.key.includes(letter)) {
+            setKeyPressed(true);
         }
-      }
+    };
+
+    const handleKeyUp = (e) => {
+        if (e.key.toUpperCase() === letter || e.key.includes(letter)) {
+            setKeyPressed(false); // Reset state when the key is released
+        }
+    };
+    
 
     return (
         <button className={keyPressed ? "singleKeyPressed" : "singleKey"}>
-            {letter}
+            {display}
         </button>
     )
 }
