@@ -6,20 +6,13 @@ function App() {
   const [text, setText] = useState([])
   const [count, setCount] = useState(0)
   const [backspacecount, setBackspaceCount] = useState(0)
-  // const keyboardLayout = [
-  //   ["~\n`", "!\n1", "@\n2", "#\n3", "$\n4", "%\n5", "^\n6", "&\n7", "*\n8", "(\n9", ")\n0", "_\n-", "+\n=", "\u232B"],
-  //   ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[\n{", "]\n}", "| \\"],
-  //   ["Caps\nLock","A", "S", "D", "F", "G", "H", "J", "K", "L", ";\n:", `"\n'`, "\u21B5"],
-  //   ["Shift", "Z", "X", "C", "V", "B", "N", "M", "<\n,", ">\n.", "?\n/", "Shift"],
-  //   ["Ctrl", "\u2756", "Alt", " ", "Alt", "fn", "\u2756", "Ctrl",]
-  // ]
 
   const keyboardLayout = [
     [
-        { display: '~\n`', value: '`' }, { display: '!\n1', value: '1' }, { display: '@\n2', value: '2' },
-        { display: '#\n3', value: '3' }, { display: '$\n4', value: '4' }, { display: '%\n5', value: '5' },
-        { display: '^\n6', value: '6' }, { display: '&\n7', value: '7' }, { display: '*\n8', value: '8' },
-        { display: '(\n9', value: '9' }, { display: ')\n0', value: '0' }, { display: '_\n-', value: '-' },
+        { display: '`\n~', value: '`' }, { display: '1\n!', value: '1' }, { display: '2\n@', value: '2' },
+        { display: '3\n#', value: '3' }, { display: '4\n$', value: '4' }, { display: '5\n%', value: '5' },
+        { display: '6\n^', value: '6' }, { display: '7\n&', value: '7' }, { display: '8\n*', value: '8' },
+        { display: '9\n(', value: '9' }, { display: '0\n)', value: '0' }, { display: '-\n_', value: '-' },
         { display: '+\n=', value: '=' }, { display: "\u232B", value: 'Backspace' }
     ],
     [
@@ -56,23 +49,11 @@ const mappedKeys = () =>
       ))
   );
 
-  // const mappedKeys = () => {
-  //   return keyboardLayout.map(row =>
-  //     row.map((key, columnIndex) => (
-  //       <Key 
-  //         key={columnIndex} 
-  //         letter={key}
-  //         text={text}
-  //       />
-  //     ))
-  //   );
-  // }
-
  
 
   return (
     <div>
-      <h1>{text}</h1>
+      <input className='' type='textbox'></input>
       <div className='keyboard'>
         {mappedKeys()}
       </div>
